@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <div id="bgBanner"></div>
+
+    <h1><%= title %></h1>
+    <p>Enter your zip code to see the best day to mow your lawn.</p>
+    <input id="zipCode" class="zip-code" type="text" placeholder="Enter your zip code">
+    <button id="zipSubmit" class="zip-code-submit">Submit</button>
+    <div id="zipCodeError"></div>
+
+    <div id="weatherDisplay">
+      <div class="row current">
+      </div>
+      <div class="row forecast">
+      </div>
+    </div>
+
+    <template id="weathertemplate">
+      <div class="forecast-box">
+        <h2></h2>
+        <p class="high"></p>
+        <p class="low"></p>
+        <p class="precip"></p>
+        <p class="skytextday"></p>
+      </div>
+    </template>
+
+    <div class="summary">
+    </div>
+
+    <footer id="footer">
+      <p>KnowToMow is a project by 
+        <span>
+          <a href="https://coreysportfolio.netlify.app/">Corey Simpson</a>
+        </span> &copy; 2024
+      </p>
+    </footer>
+
+    <!-- <div class="grass-container"></div> -->
+    <script src='/javascripts/zipCode.js'></script>
+  </body>
+</html>

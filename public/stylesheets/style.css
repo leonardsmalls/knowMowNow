@@ -1,0 +1,344 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: whitesmoke;
+}
+
+a {
+  color: #00B7FF;
+}
+
+div#bgBanner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 300px;
+  width: 100vw;
+  z-index: -1;
+  background: linear-gradient(to right, transparent, #45a049);
+}
+
+input[type="text"] {
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  box-shadow: 0 0 15px 4px rgba(0,0,0,0.06);
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  background-color: #4CAF50;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-left: -3px;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+div.row.current {
+  display: flex;
+  justify-content: space-between;
+  grid-area: current;
+}
+
+div.row.forecast {
+  display: flex;
+  justify-content: space-between;
+  grid-area: forecast;
+}
+
+#weatherDisplay {
+  margin-top: 20px;
+  display: grid;
+  grid-template-areas: "current" "forecast";
+  grid-template-columns: minmax(500px, 1fr);
+}
+
+.forecast-box {
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  position: relative;
+}
+
+.forecast-box.clear,
+.forecast-box.sunny,
+.forecast-box.mostly-sunny,
+.forecast-box.partly-sunny,
+.forecast-box.cloudy,
+.forecast-box.mostly-cloudy,
+.forecast-box.light-rain,
+.forecast-box.rain-showers,
+.forecast-box.rain {
+  position: relative;
+}
+
+.forecast-box.clear::before,
+.forecast-box.sunny::before,
+.forecast-box.partly-sunny::before,
+.forecast-box.mostly-sunny::before,
+.forecast-box.cloudy::before,
+.forecast-box.mostly-cloudy::before,
+.forecast-box.light-rain::before,
+.forecast-box.rain-showers::before,
+.forecast-box.rain::before {
+  content: "";
+  background-size: cover;
+  opacity: 0.125;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: 1;   
+}
+
+.forecast-box.clear::before {
+  background-image: url('../images/clear.png');
+}
+
+.forecast-box.sunny::before {
+  background-image: url('../images/sunny.png');
+}
+
+.forecast-box.rain::before {
+  background-image: url('../images/rain.png');
+}
+
+.forecast-box.mostly-sunny::before {
+  background-image: url('../images/mostly-sunny.png');
+}
+
+.forecast-box.partly-sunny::before {
+  background-image: url('../images/partly-sunny.png');
+}
+
+.forecast-box.mostly-cloudy::before {
+  background-image: url('../images/mostly-cloudy.png');
+}
+
+.forecast-box.cloudy::before {
+  background-image: url('../images/cloudy.png');
+}
+
+.forecast-box.light-rain::before {
+  background-image: url('../images/light-rain.png');
+}
+
+.forecast-box.rain-showers::before {
+  background-image: url('../images/rain-showers.png');
+}
+
+.good-mow::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-top: 15px solid rgba(42, 250, 0, 0.5);
+  border-right: 15px solid rgba(42,250,0,0.5);
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+}
+
+.ok-mow::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-top: 15px solid rgba(255, 153, 0, 0.5);
+  border-right: 15px solid rgba(255,153,0,0.5);
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+}
+
+.bad-mow::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-top: 15px solid rgba(250,0,0,0.5);
+  border-right: 15px solid rgba(250,0,0,0.5);
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+}
+
+.best-day-to-mow {
+  border: 3px solid rgba(60, 221, 15, 0.75);
+}
+
+.grass-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.grass {
+  width: 0px;
+  height: 30px;
+  margin-left:5px;
+  /* border-top: 3px solid transparent;
+  border-left: 5px solid green;
+  border-bottom: 5px solid transparent; */
+}
+
+.grass-top {
+  border-top: 3px solid transparent;
+  border-left: 5px solid green;
+  border-bottom: 5px solid transparent;
+  height: 10px;
+  position: relative;
+}
+
+.grass-bottom {
+  border-top: 3px solid transparent;
+  border-left: 5px solid green;
+  border-bottom: 5px solid transparent;
+  height: 20px;
+  position: relative;
+}
+
+.clip-grass1 {
+  animation: grassClipped1 3s 1 forwards;
+}
+
+.clip-grass2 {
+  animation: grassClipped2 2.9s 1 forwards;
+}
+
+.clip-grass3 {
+  animation: grassClipped3 3.1s 1 forwards;
+}
+
+@keyframes grassClipped1 {
+  0% {
+    transform: rotate(0deg);
+    top: 5px;
+    left: 5px;
+  }
+  59% {
+    transform: rotate(0deg);
+    top: 5px;
+    left: 5px;
+  }
+  60% {
+    transform: rotate(0deg);
+    top: 0;
+    left: 0;
+  }
+  85% {
+    transform: rotate(110deg);
+    top: -15px;
+    left: -15px;
+  }
+  95% {
+    transform: rotate(80deg);
+    top: 15px;
+    left: 10px;
+  }
+  100% {
+    transform: rotate(30deg);
+    top: 30px;
+    left: -30px;
+  }
+}
+
+@keyframes grassClipped2 {
+  0% {
+    transform: rotate(0deg);
+    top: 5px;
+    left: 5px;
+  }
+  59% {
+    transform: rotate(0deg);
+    top: 5px;
+    left: 5px;
+  }
+  60% {
+    transform: rotate(10deg);
+    top: 0;
+    left: 0;
+  }
+  83% {
+    transform: rotate(310deg);
+    top: -16px;
+    left: -15px;
+  }
+  96% {
+    transform: rotate(50deg);
+    top: 15px;
+    left: 10px;
+  }
+  100% {
+    transform: rotate(30deg);
+    top: 30px;
+    left: -30px;
+  }
+}
+
+@keyframes grassClipped3 {
+  0% {
+    transform: rotate(0deg);
+    top: 5px;
+    left: 5px;
+  }
+  59% {
+    transform: rotate(0deg);
+    top: 5px;
+    left: 5px;
+  }
+  60% {
+    transform: rotate(10deg);
+    top: 0;
+    left: 0;
+  }
+  86% {
+    transform: rotate(200deg);
+    top: -14px;
+    left: -14px;
+  }
+  93% {
+    transform: rotate(160deg);
+    top: 15px;
+    left: 10px;
+  }
+  100% {
+    transform: rotate(95deg);
+    top: 29px;
+    left: -29px;
+  }
+}
+
+footer {
+  display: flex;
+  justify-content: flex-end;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+}
+
+footer p {
+  padding-right: 50px;
+}
