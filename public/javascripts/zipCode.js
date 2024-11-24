@@ -273,7 +273,7 @@ const zipCodeInput = () => {
     });
 
     submitButton.addEventListener('click', () => {
-        console.log('usbmitClicked');
+        console.log('submitClicked');
         if (zipCode.value.length !== 5) {
             zipCodeError.innerHTML = 'Please enter a valid 5 digit zip code';
         } else {
