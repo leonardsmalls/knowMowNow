@@ -194,7 +194,7 @@ const displayWeather = (data) => {
         let pLow = clone.querySelector("p.low");
         let pPrecip = clone.querySelector("p.precip");
         let pSkyTextDay = clone.querySelector("p.skytextday");
-        let skyTextDayClass = day.skytextday.replace(' ', '-').toLowerCase();
+        let skyTextDayClass = day.skytextday.replaceAll(' ', '-').toLowerCase();
         h2.textContent = day.day;
         pHigh.textContent = "High: " + day.high;
         pLow.textContent = "Low: " + day.low;
