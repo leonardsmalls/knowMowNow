@@ -108,6 +108,7 @@ const addSummary = (goodDays, okDays, badDays) => {
 }
 
 const displayWeather = (data) => {
+    console.log(data);
     const localeName = data[0].location.name;
     const localeTemp = data[0].current.temperature;
     const forecast = data[0].forecast;
