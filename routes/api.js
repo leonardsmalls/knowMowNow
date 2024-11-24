@@ -7,7 +7,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/weather', function(req, res, next) {
-    console.log("Weather route hit");
+  console.log("Weather route hit");
   
   // Get the zipcode from the body of the request
   var zipcode = req.query.zipcode;

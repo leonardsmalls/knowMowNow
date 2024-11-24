@@ -274,7 +274,7 @@ const zipCodeInput = () => {
     });
 
     submitButton.addEventListener('click', () => {
-        console.log('submitClicked');
+        console.log('submitButtonClicked');
         if (zipCode.value.length !== 5) {
             zipCodeError.innerHTML = 'Please enter a valid 5 digit zip code';
         } else {
