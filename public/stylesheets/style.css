@@ -18,6 +18,20 @@ div#bgBanner {
   background: linear-gradient(to right, transparent, #45a049);
 }
 
+div#greenSpace {
+  display: inline-grid;
+  grid-template-areas: "input buttons";
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 0;
+  width: 100%;
+}
+div#mowInput {
+  grid-area: input;
+}
+div#postMowButtonGroup {
+  grid-area: buttons;
+}
+
 input[type="text"] {
   padding: 10px;
   margin-top: 10px;
@@ -341,4 +355,275 @@ footer {
 
 footer p {
   padding-right: 50px;
+}
+
+/*-------------------------*/
+/*--Post Mow Button Group--*/
+/*-------------------------*/
+
+#postMowButtonGroup {
+  display: flex;
+  justify-content: start;
+  flex-flow: column;
+  row-gap: 20px;
+  align-items : end;
+}
+
+#postMowButtonGroup button {
+  width: 150px;
+  border-radius: 5px;
+  color: green;
+  background-color: #fff;
+  box-shadow: 3px 3px 3px rgba(2, 104, 41, 1);
+  cursor: pointer;
+}
+
+/*---------------------*/
+/*-- I Mowed Mow_dal --*/
+/*---------------------*/
+
+.mowdal-backdrop {
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vw;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
+  display: flex;
+  justify-content: center;
+}
+
+#mowedFormModal {
+  position: absolute;
+  top: 5em;
+  padding: 2vw;
+  border: 1px solid green;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 3px 3px 3px rgba(0,0,0,0.8);
+
+}
+
+#mowedFormModal button.btn-close {
+  position: absolute;
+  border-radius: 50%;
+  top: -15px;
+  right: -15px;
+  height: 50px;
+  width: 50px;
+  box-shadow:  2px 2px 2px rgba(0,0,0,0.8);
+}
+
+#mowedFormModal button.btn-close:hover {
+  box-shadow:  1px 1px 1px rgba(0,0,0,1);
+  cursor: pointer;
+}
+
+#mowedForm {
+  color: darkgreen;
+  width: 430px;
+}
+
+.form-control {
+  color: green;
+}
+
+.modal-body {
+  display: grid;
+  grid-template-areas:
+    "grassHeight"
+    "grassState"
+    "weedsState"
+    "date";
+  grid-template-columns: 1fr;
+  row-gap: 20px;
+}
+
+.mb-3:first-of-type {
+  grid-area: grassHeight;
+  display: grid;
+  grid-template-areas:
+    "grassLabel grassLabel"
+    "before after";
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+}
+.mb-3:first-of-type > .mb-3-group:first-of-type label {
+  grid-area: grassLabel;
+  display: flex;
+  flex-flow: row;
+}
+.mb-3:first-of-type > .mb-3-group:first-of-type {
+  grid-area: before;
+  display: flex;
+  flex-flow: column;
+  column-gap: 20px;
+}
+.mb-3:first-of-type > .mb-3-group:last-of-type {
+  grid-area: after;
+  display: flex;
+  flex-flow: column;
+  column-gap: 20px;
+}
+.mb-3:first-of-type > .mb-3-group input {
+  width: 40%;
+}
+.mb-3-group {
+  align-items: center;
+  margin-top: -10px;
+}
+.mb-3-group div {
+  text-align: center;
+}
+.mb-3-group input {
+  border: none;
+  padding: 5px;
+  line-height: 3em;
+}
+.mb-3-group legend {
+  position: relative;
+  top: 10px;
+  left: -50px;
+  background-color: #fff;;
+}
+.mb-3-group fieldset {
+  width: 150px;
+  border: 1px solid green;
+}
+
+.mb-3:nth-of-type(2) {
+  grid-area: grassState;
+  display: grid;
+  grid-template-areas:
+    "grassLabel"
+    "grassButtons";
+}
+.mb-3:nth-of-type(2) label{
+  grid-area: grassLabel;
+  display: flex;
+}
+.mb-3:nth-of-type(2) #mowedYardState {
+  grid-area: grassButtons;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.mb-3:nth-of-type(3) {
+  grid-area: weedsState;
+  display: grid;
+  grid-template-areas:
+    "weedsLabel"
+    "weedsButtons";
+}
+.mb-3:nth-of-type(3) label{
+  grid-area: weedsLabel;
+  display: flex;
+}
+.mb-3:nth-of-type(3) #mowedWeedsState {
+  grid-area: weedsButtons;
+  display: flex;
+  justify-content: space-evenly;
+}
+#mowedYardState button,
+#mowedWeedsState button {
+  width: fit-content;
+  border-radius: 5px;
+  border: 2px solid green;
+  color: green;
+  background-color: #fff;
+  box-shadow: 1px 1px 1px rgba(2, 104, 41, 1);
+  cursor: pointer;
+}
+#mowedYardState button:hover,
+#mowedWeedsState button:hover {
+  background-color: #f9f9f9;
+  cursor: pointer;
+}
+#mowedYardState button.selected,
+#mowedWeedsState button.selected {
+  background-color: #4CAF50;
+  color: white;
+  transition: all 0.25s;
+}
+
+.mb-3:last-of-type {
+  grid-area: date;
+  display: grid;
+  grid-template-areas:
+    "dateLabel"
+    "dateInput";
+  justify-content: center;
+  margin-top: 20px;
+}
+.mb-3:last-of-type label{
+  grid-area: dateLabel;
+  display: flex;
+}
+.mb-3:last-of-type input[type="date"] {
+  grid-area: dateInput;
+  display: flex;
+  width: 20vw;
+  border: 1px solid green;
+  color: green;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+/* .modal-footer button.disabled {
+  transform: rotateX(90deg);
+  background-color: #dddddd;
+  border: 1px solid #bebdbd;
+  color: #ccc;
+  cursor: not-allowed;
+  box-shadow: 0px 0px 0px rgba(0,0,0,0.1);
+  transition: all 0.5s
+} */
+
+.modal-footer button {
+  border-radius: 5px;
+  box-shadow: 3px 3px 3px rgba(2, 104, 41, 1);
+  transition: all 0.5s;
+}
+
+.modal-footer button:hover {
+  box-shadow: 1px 1px 1px rgb(1, 65, 25);
+  transition: all 0.25s;
+}
+
+.error,
+.error input {
+  background: rgba(255,0,0,0.3) !important;
+}
+
+section.content.display-none-transition {
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.25s;
+}
+
+section.content.display-none {
+  display: none;
+  opacity: 0;
+  visibility: hidden;
+}
+
+section.content.display-show-transition {
+  display: block;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.25s;
+}
+
+section.content {
+  opacity: 1;
+  visibility: visible;
+  transition: all 0.25s;
 }

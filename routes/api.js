@@ -18,6 +18,12 @@ router.get('/weather', function(req, res, next) {
     console.log(JSON.stringify(result, null, 2));
     res.send(JSON.stringify(result, null, 2));
   });
-  });
+});
+
+// router.get('/stats', function(req, res, next) {
+//   console.log("Stats! route hit");
+  
+//   app.use('/stats', statsRouter);
+// });
 
 module.exports = router;

@@ -1,6 +1,8 @@
-const writeToLocalStorage = (key, value) => {
-    window.localStorage.setItem(key, value);
-}
+import * as mowedForm from './mowedForm.js';
+import * as localStorage from './localStorage.js';
+import { statsView} from './statsView.js';
+import { mainView } from './mainView.js';
+import { toggleView } from './toggleView.js';
 
 const growGrass = () => {
     const grassContainer = document.querySelector('.grass-container');
@@ -102,9 +104,6 @@ const addSummary = (goodDays, okDays, badDays) => {
     summary.appendChild(pGood);
     summary.appendChild(pOk);
     summary.appendChild(pBad);
-
-
-    
 }
 
 const displayWeather = (data) => {
@@ -260,6 +259,16 @@ const clearPreviousData = () => {
     document.querySelector('.summary').innerHTML = '';
 }
 
+const prepopulatePreviousZipCode = () => {
+    const zipCode = localStorage.readFromLocalStorage('zipCode');
+    if (zipCode && window.location.pathname === '/') {
+        document.getElementById('zipCode').value = zipCode;
+        fetchZipData(zipCode);
+    } else {
+        document.getElementById('zipCode').value = zipCode;
+    }
+}
+
 const zipCodeInput = () => {
     const zipCode = document.getElementById('zipCode');
     const zipCodeError = document.getElementById('zipCodeError');
@@ -279,16 +288,32 @@ const zipCodeInput = () => {
             zipCodeError.innerHTML = 'Please enter a valid 5 digit zip code';
         } else {
             zipCodeError.innerHTML = '';
-            clearPreviousData();
             console.log("Zip: " + zipCode.value);
-            writeToLocalStorage('zipCode', zipCode.value);
+            localStorage.writeToLocalStorage('zipCode', zipCode.value);
+            toggleView('main');
+            clearPreviousData();
             fetchZipData(zipCode.value);
-            //putData('/weather', { zipcode: zipCode.value });
         }
     });
 }
 
+const iMowedButton = document.getElementById('iMowed');
+
+iMowedButton.addEventListener('click', () => {
+    console.log('mowed');
+    mowedForm.mowedForm();
+});
+
+const statsButton = document.getElementById('mowStatistics');
+
+statsButton.addEventListener('click', (ev) => {
+    console.log(ev.target);
+    // statsView();
+    toggleView('stats');
+});
+
 const main = () => {
+    prepopulatePreviousZipCode();
     zipCodeInput();
 }
 
