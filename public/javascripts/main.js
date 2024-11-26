@@ -1,7 +1,5 @@
 import * as mowedForm from './mowedForm.js';
 import * as localStorage from './localStorage.js';
-import { statsView} from './statsView.js';
-import { mainView } from './mainView.js';
 import { toggleView } from './toggleView.js';
 
 const growGrass = () => {
