@@ -1,7 +1,3 @@
-// import * as mowedForm from './mowedForm.js';
-// import * as localStorage from './localStorage.js';
-// import { toggleView } from './toggleView.js';
-
 const mowedForm = () => {
     const body = document.querySelector('body');
     const mowdalBG = document.createElement('div');
