@@ -640,6 +640,7 @@ section.content.stats-content {
   left: 20vw;
   display: flex;
   justify-content: center;
+  width: fit-content;
 }
 
 section.content.stats-content  canvas#mowStatsChart {
