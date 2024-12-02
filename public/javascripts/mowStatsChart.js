@@ -1,35 +1,6 @@
 const mowStatsChart = document.getElementById('mowStatsChart');
-
-const displayChart = (Chart) => {
-    //console.log(Chart.ctx);
-    // const chart = new Chart(mowStatsChart, {
-    //     type: 'line',
-    //     data: {
-    //         labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
-    //         datasets: [{
-    //             label: 'Mowed Yards',
-    //             data: [12, 19, 3, 5, 2, 3, 9],
-    //             backgroundColor: 'rgba(255, 99, 132, 0.2)',
-    //             borderColor: 'rgba(255, 99, 132, 1)',
-    //             borderWidth: 1
-    //         },
-    //         {
-    //             label: 'Mowed Weeds',
-    //             data: [2, 3, 1, 3, 2, 4, 1],
-    //             backgroundColor: 'rgba(54, 162, 235, 0.2)',
-    //             borderColor: 'rgba(54, 162, 235, 1)',
-    //             borderWidth: 1
-    //         }]
-    //     },
-    //     options: {
-    //         scales: {
-    //             y: {
-    //                 beginAtZero: true
-    //             }
-    //         }
-    //     }
-    // });
-}
+const statsButtonProfile = document.getElementById('viewGrassHeightProfile');
+const statsButtonViewAll = document.getElementById('viewAllStats');
 
 const buildChart = async (mowStats) => {
     const ms = JSON.parse(mowStats);
@@ -78,6 +49,16 @@ const buildChart = async (mowStats) => {
     console.log(grassHeightBeforeArr);
     console.log(grassHeightAfterArr);
 
+    const canvasData = mowStatsChart.getContext('2d');
+
+    try {
+        var existing_chart = Chart.getChart('mowStatsChart')
+        existing_chart.destroy();
+        console.log('trying to destory then redraw chart');
+    } catch(e) {
+        console.log('chart does not exist yet to destroy');
+    }
+
     new Chart(mowStatsChart, {
         type: 'line',
         data: {
@@ -107,6 +88,92 @@ const buildChart = async (mowStats) => {
     });
  };
 
+const buildChartProfile = async (mowStats) => {
+    const ms = JSON.parse(mowStats);
+    const dateArr = [];
+    const grassHeightStart = [];
+    const grassHeightEnd = [];
+    const grassHeightData = [];
+
+    const mapped = ms.map((v, i) => {
+        return {i, date: v['mow-date']};
+    })
+
+    mapped.sort((a, b) => {
+        if (a.date > b.date) {
+          return 1;
+        }
+        if (a.date < b.date) {
+          return -1;
+        }
+        return 0;
+      });
+
+    const sortedByDate = mapped.map((v) => ms[v.i]);
+
+    sortedByDate.forEach((instance) => {
+        for(let data in instance) {
+            console.log(instance[data]);
+            if (data == "mow-date") {
+                dateArr.push(instance[data]);
+                console.log('mowDate - instance[data]');
+            } else if (data == 'mow-stats') {
+                for (let stats in instance[data]) {
+                    console.log(instance[data][stats]);
+                    if (stats == 'grass-height-before' && instance[data][stats] < 10) {
+                        const tempObj = {};
+                        tempObj['x'] = instance[data]['mowed-date'];
+                        tempObj['y'] = instance[data][stats];
+                        grassHeightData.push(tempObj);
+                    } else if (stats == 'grass-height-after' && instance[data][stats] < 10) {
+                        const tempObj = {};
+                        tempObj['x'] = instance[data]['mowed-date'];
+                        tempObj['y'] = instance[data][stats];
+                        grassHeightData.push(tempObj);
+                    }
+                }
+            }
+
+
+        }
+    });
+
+    console.log(dateArr);
+    console.log(grassHeightData);
+
+    const canvasData = mowStatsChart.getContext('2d');
+
+    try {
+        var existing_chart = Chart.getChart('mowStatsChart')
+        existing_chart.destroy();
+        console.log('trying to destory then redraw chart');
+    } catch(e) {
+        console.log('chart does not exist yet to destroy');
+    }
+
+    new Chart(mowStatsChart, {
+        type: 'line',
+        data: {
+            labels: dateArr,
+            datasets: [{
+                label: 'Grass Height Profile',
+                data: grassHeightData,
+                backgroundColor: 'rgba(70, 161, 74, 0.75)',
+                borderColor: 'rgba(99, 255, 132, 1)',
+                borderWidth: 1,
+                fill: true
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+ };
+
 const statsButton = document.getElementById('mowStatistics');
 
 statsButton.addEventListener('click', (ev) => {
@@ -115,5 +182,17 @@ statsButton.addEventListener('click', (ev) => {
     toggleView('stats');
     const knowMow = readFromLocalStorage('mow-history');
 
+    buildChart(knowMow);
+});
+
+statsButtonProfile.addEventListener('click', (ev) => {
+    console.log(ev.target);
+    const knowMow = readFromLocalStorage('mow-history');
+    buildChartProfile(knowMow);
+});
+
+statsButtonViewAll.addEventListener('click', (ev) => {
+    console.log(ev.target);
+    const knowMow = readFromLocalStorage('mow-history');
     buildChart(knowMow);
 });

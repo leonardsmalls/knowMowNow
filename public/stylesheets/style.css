@@ -629,6 +629,26 @@ section.content {
 }
 
 section.content.stats-content {
+  display: grid;
+  grid-template-areas:
+    "statsButtons statsGraph";
+  grid-template-columns: 0.25fr 1fr;
+  margin-top: 20px;
+  align-items: center;
+  justify-items: center;
+  column-gap: 20px;
+}
+
+section.content.stats-content #statSelections {
+  grid-area: statsButtons;
+  display: flex;
+  flex-flow: column;
+  row-gap: 20px;
+  justify-self: end;
+}
+
+section.content.stats-content #statsGraphContainer {
+  grid-area: statsGraph;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -637,13 +657,22 @@ section.content.stats-content {
   max-width: 60vw;
   margin-top: 20px;
   position: relative;
-  left: 20vw;
   display: flex;
   justify-content: center;
   width: fit-content;
 }
 
-section.content.stats-content  canvas#mowStatsChart {
+section.content.stats-content #statsGraphContainer  canvas#mowStatsChart {
   max-height: 500px;
   max-width: 60vw;
+  height: 500px;
+}
+
+.stat-selection-button {
+  width: 150px;
+  border-radius: 5px;
+  color: green;
+  background-color: #fff;
+  box-shadow: 3px 3px 3px rgba(2, 104, 41, 1);
+  cursor: pointer;
 }
