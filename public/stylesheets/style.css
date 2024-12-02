@@ -60,6 +60,7 @@ button {
 
 button:hover {
   background-color: #45a049;
+  color: white;
 }
 
 div.row.current {
