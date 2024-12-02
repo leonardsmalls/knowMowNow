@@ -1,2 +1,5 @@
 # knowMowNow
- know to mow, now
+
+npm install
+
+npm start
