@@ -639,3 +639,8 @@ section.content.stats-content {
   position: relative;
   left: 25vw;
 }
+
+section.content.stats-content  canvas#mowStatsChart {
+  max-height: 500px;
+  max-width: 50vw;
+}
