@@ -1,6 +1,4 @@
 const mowStatsChart = document.getElementById('mowStatsChart');
-const statsButtonProfile = document.getElementById('viewGrassHeightProfile');
-const statsButtonViewAll = document.getElementById('viewAllStats');
 
 const buildChart = async (mowStats) => {
     const ms = JSON.parse(mowStats);
@@ -175,24 +173,24 @@ const buildChartProfile = async (mowStats) => {
  };
 
 const statsButton = document.getElementById('mowStatistics');
+const statsButtonProfile = document.getElementById('viewGrassHeightProfile');
+const statsButtonViewAll = document.getElementById('viewAllStats');
+const knowMow = readFromLocalStorage('mow-history');
 
 statsButton.addEventListener('click', (ev) => {
     console.log(ev.target);
     // statsView();
     toggleView('stats');
-    const knowMow = readFromLocalStorage('mow-history');
-
+    
     buildChart(knowMow);
 });
 
 statsButtonProfile.addEventListener('click', (ev) => {
     console.log(ev.target);
-    const knowMow = readFromLocalStorage('mow-history');
     buildChartProfile(knowMow);
 });
 
 statsButtonViewAll.addEventListener('click', (ev) => {
     console.log(ev.target);
-    const knowMow = readFromLocalStorage('mow-history');
     buildChart(knowMow);
 });
