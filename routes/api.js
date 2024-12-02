@@ -21,15 +21,4 @@ router.get('/weather', function(req, res, next) {
   });
 });
 
-<<<<<<< HEAD
-// router.get('/stats', function(req, res, next) {
-//   console.log("Stats! route hit");
-
-//   const chart = Chart;
-
-//   res.send(chart, null, 2);
-// });
-
-=======
->>>>>>> 6dcb9073d401bd83a60af6c8dbb6bf404079472b
 module.exports = router;
