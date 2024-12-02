@@ -634,7 +634,7 @@ section.content.stats-content {
   border-radius: 5px;
   background-color: #f9f9f9;
   max-height: 500px;
-  max-width: 50vw;
+  max-width: 60vw;
   margin-top: 20px;
   position: relative;
   left: 20vw;
@@ -644,5 +644,5 @@ section.content.stats-content {
 
 section.content.stats-content  canvas#mowStatsChart {
   max-height: 500px;
-  max-width: 50vw;
+  max-width: 60vw;
 }
