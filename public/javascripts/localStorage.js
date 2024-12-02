@@ -5,5 +5,3 @@ const writeToLocalStorage = (key, value) => {
 const readFromLocalStorage = (key) => {
     return window.localStorage.getItem(key);
 }
-
-export { writeToLocalStorage, readFromLocalStorage }

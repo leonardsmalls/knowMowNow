@@ -26,5 +26,3 @@ const toggleView = (toView) => {
         show.classList.remove('display-show-transition');
     }, 500);
 }
-
-export { toggleView };

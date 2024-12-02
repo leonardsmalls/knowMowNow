@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 const weather = require('weather-js');
 
+
 router.get('/', function(req, res, next) {
   res.send({'msg':'respond with an api'});
 });
@@ -22,8 +23,10 @@ router.get('/weather', function(req, res, next) {
 
 // router.get('/stats', function(req, res, next) {
 //   console.log("Stats! route hit");
-  
-//   app.use('/stats', statsRouter);
+
+//   const chart = Chart;
+
+//   res.send(chart, null, 2);
 // });
 
 module.exports = router;
