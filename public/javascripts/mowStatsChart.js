@@ -194,3 +194,4 @@ statsButtonViewAll.addEventListener('click', (ev) => {
     console.log(ev.target);
     buildChart(knowMow);
 });
+
