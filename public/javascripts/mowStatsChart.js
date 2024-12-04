@@ -57,7 +57,7 @@ const buildChart = async (mowStats) => {
         console.log('chart does not exist yet to destroy');
     }
 
-    new Chart(mowStatsChart, {
+    const chartAll = new Chart(mowStatsChart, {
         type: 'line',
         data: {
             labels: dateArr,
@@ -149,7 +149,7 @@ const buildChartProfile = async (mowStats) => {
         console.log('chart does not exist yet to destroy');
     }
 
-    new Chart(mowStatsChart, {
+    const chartProfile = new Chart(mowStatsChart, {
         type: 'line',
         data: {
             labels: dateArr,
