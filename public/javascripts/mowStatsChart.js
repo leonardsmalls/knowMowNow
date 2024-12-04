@@ -172,6 +172,16 @@ const buildChartProfile = async (mowStats) => {
     });
  };
 
+ const notifyChart = (mowStats, type) => {
+    setTimeout(() => {
+        if (type === 'profile') {
+            buildChartProfile(mowStats);
+        } else {
+            buildChart(mowStats);
+        }
+    }, 100);
+ }
+
 const statsButton = document.getElementById('mowStatistics');
 const statsButtonProfile = document.getElementById('viewGrassHeightProfile');
 const statsButtonViewAll = document.getElementById('viewAllStats');
@@ -187,11 +197,13 @@ statsButton.addEventListener('click', (ev) => {
 
 statsButtonProfile.addEventListener('click', (ev) => {
     console.log(ev.target);
-    buildChartProfile(knowMow);
+    //buildChartProfile(knowMow);
+    notifyChart(knowMow, 'profile');
 });
 
 statsButtonViewAll.addEventListener('click', (ev) => {
     console.log(ev.target);
-    buildChart(knowMow);
+    //buildChart(knowMow);
+    notifyChart(knowMow, 'all');
 });
 
