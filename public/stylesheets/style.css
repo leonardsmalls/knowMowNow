@@ -608,25 +608,38 @@ section.content.display-none-transition {
   opacity: 0;
   visibility: hidden;
   transition: all 0.25s;
+  position: relative;
+  left: 0;
 }
 
 section.content.display-none {
   display: none;
   opacity: 0;
   visibility: hidden;
+  position: relative;
+  left: -100vw;
 }
 
 section.content.display-show-transition {
   display: block;
   opacity: 0;
   visibility: hidden;
+  position: relative;
+  left: -100vw;
   transition: all 0.25s;
 }
 
 section.content {
   opacity: 1;
   visibility: visible;
+  position: relative;
+  left: 0;
   transition: all 0.25s;
+}
+
+header #bgBanner {
+  position: absolute;
+  left: 0;
 }
 
 section.content.stats-content {

@@ -189,6 +189,9 @@ const knowMow = readFromLocalStorage('mow-history');
 
 statsButton.addEventListener('click', (ev) => {
     console.log(ev.target);
+    const ll = readFromLocalStorage('latlong');
+
+    fetchHistoricalWeatherData(ll);
     // statsView();
     toggleView('stats');
     
@@ -206,4 +209,19 @@ statsButtonViewAll.addEventListener('click', (ev) => {
     //buildChart(knowMow);
     notifyChart(knowMow, 'all');
 });
+
+const displayHistoricalWeatherData = (data) => {
+    console.log(data);
+}
+
+const fetchHistoricalWeatherData = async (ll) => {
+
+    console.log(ll);
+    await fetch('/api/historicalWeatherData?latlong=' + ll + '&dateOfMow=2021-07-01')
+   .then(response => response.json())
+   .then(data => displayHistoricalWeatherData(data))
+   .catch((error) => {
+     console.error('Error:', error);
+   });
+ };
 

@@ -311,6 +311,11 @@ const displayWeather = (data) => {
     const localeName = data[0].location.name;
     const localeTemp = data[0].current.temperature;
     const forecast = data[0].forecast;
+    const latlong = {'lat': data[0].location.lat,
+                    'long': data[0].location.long
+                };
+
+    writeToLocalStorage('latlong', JSON.stringify(latlong));
 
     //weatherDisplay.innerHTML = `The current temperature in ${localeName} is ${localeTemp} degrees.`;
 
