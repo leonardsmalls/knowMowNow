@@ -2,7 +2,7 @@ const config = require("./src/config");
 const path = require('path');
 
 var webpackConfig = {
-    entry: {main: ["./src/client/main.js"]},
+    entry: {main: ["./index.js"]},
     output: {
         path: path.resolve(__dirname, 'dist'), // Output directory
         filename: "main.bundle.js",
