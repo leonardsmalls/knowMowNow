@@ -1,9 +1,10 @@
 const config = require("./src/config");
+const path = require('path');
 
 var webpackConfig = {
     entry: {main: ["./src/client/main.js"]},
     output: {
-        path: config.distFolder,
+        path: path.resolve(__dirname, 'dist'), // Output directory
         filename: "main.bundle.js",
         publicPath: "/assets/"
     },
