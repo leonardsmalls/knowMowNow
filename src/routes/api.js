@@ -3,6 +3,11 @@ var router = express.Router();
 const weather = require('weather-js');
 let {PythonShell} = require('python-shell')
 
+// import express from 'express';
+// import weather from 'weather-js';
+// import {PythonShell} from 'python-shell';
+//const router = express.Router();
+
 
 router.get('/', function(req, res, next) {
   res.send({'msg':'respond with an api'});
@@ -76,3 +81,4 @@ router.get('/historicalWeatherData', function(req, res, next) {
 });
 
 module.exports = router;
+//export default router;

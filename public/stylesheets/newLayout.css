@@ -1,0 +1,17 @@
+section.header-content {
+    display: grid;
+    grid-template-areas:
+        "one two";
+}
+
+div#mowInput {
+    grid-area: one;
+}
+
+div#mowInput h1 {
+    margin: 0;
+}
+
+div#postMowButtonGroup {
+    grid-area: two;
+}
